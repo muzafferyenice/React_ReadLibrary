@@ -1,0 +1,38 @@
+@use "../../../assets/scss/mixins" as m;
+@use "../../../assets/scss/variables" as v;
+
+.dashboard {
+  @include m.flexbox(row, flex-start, flex-start, 30px);
+  background-color: v.$color5;
+  padding: 1rem;
+  flex-wrap: wrap;
+  @media (max-width: 792) {
+    @include m.flexbox(row, flex-start, flex-start, 10px);
+  }
+}
+
+.dashboard-item {
+  @include m.flexbox(row, flex-start, flex-start, 30px);
+  width: 20vw;
+  height: 20vh;
+
+  padding: 1rem;
+  background-color: v.$color2;
+  &:hover {
+    background-color: v.$color1;
+    color: v.$color3;
+    cursor: pointer;
+  }
+  svg {
+    font-size: 6rem;
+    color: v.$color5;
+  }
+
+  .square {
+    font-size: 1rem;
+    color: v.$color4;
+  }
+  h3 {
+    font-size: 3rem;
+  }
+}

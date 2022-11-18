@@ -1,0 +1,55 @@
+@use "../../../assets/scss/mixins" as m;
+@use "../../../assets/scss/variables" as v;
+
+.authors {
+  @include m.reset-list();
+  padding: 20px 15px 50px 0;
+  background-color: v.$color5;
+
+  padding: 10px;
+  font-size: 1.5rem;
+  border-bottom: 1px solid v.$color1;
+}
+.p-search {
+  background-color: v.$color2;
+  input {
+    padding: 0.5rem 10rem;
+    border-radius: 20px;
+  }
+  .icon,
+  .btn-new {
+    background-color: v.$color4;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: v.$color1;
+  }
+}
+.p-update-form {
+  background-color: v.$color5;
+  width: 100vw;
+  height: 50vh;
+
+  div {
+    p {
+      padding-top: 3rem;
+      margin: auto 2rem 0 2rem;
+    }
+    input {
+      width: 65vw;
+      height: 5vh;
+      margin: auto 2rem 2rem 2rem;
+      border-radius: 10px;
+    }
+  }
+
+  .btn-edit-page {
+    margin: 7rem auto 2rem 25rem;
+    padding: 0.5rem;
+    @media (max-width: 500px) {
+      margin: 7rem auto 2rem 7rem;
+
+      //font-size: 0.2rem;
+      //font-weight: 300;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@use "../../../assets/scss/mixins" as m;
+@use "../../../assets/scss/variables" as v;
+
+.book {
+  @include m.flexbox(column, flex-start, flex-start, 0);
+}
+
+.book-info {
+  @include m.flexbox(row, flex-start, flex-start, 50%);
+  flex-wrap: wrap;
+}
+img {
+  width: 15vw;
+  height: 15vh;
+}
+.book-edit {
+  @include m.flexbox();
+  .form {
+    @include m.flexbox();
+    flex-wrap: wrap;
+  }
+  .form-control {
+    width: 30vw;
+    height: 1vh;
+  }
+}

@@ -1,0 +1,14 @@
+@use "../../../../assets/scss/mixins" as m;
+@use "../../../../assets/scss/variables" as v;
+
+.contactInfoBorder {
+    // border: 2px solid v.$color1;
+    margin: 1rem;
+
+    .spacer {
+        display: flex;
+        flex-wrap: wrap;
+        // justify-content: space-between;
+        gap: 1rem;
+    }
+}

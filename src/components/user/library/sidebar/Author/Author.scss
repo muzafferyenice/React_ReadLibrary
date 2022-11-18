@@ -1,0 +1,17 @@
+@use "../../../../../assets/scss/variables" as v;
+
+.auth-container {
+  width: 400px;
+  height: 150px;
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: v.$color3;
+  overflow-y: scroll;
+  .author-row {
+    .author-col {
+      .form-check {
+        height: auto;
+      }
+    }
+  }
+}

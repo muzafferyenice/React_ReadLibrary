@@ -1,0 +1,10 @@
+@use "../../../../assets/scss/mixins" as m;
+@use "../../../../assets/scss/variables" as v;
+
+.detailBook {
+  .card {
+    Img {
+      border-radius: 1rem;
+    }
+  }
+}

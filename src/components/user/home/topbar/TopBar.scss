@@ -1,0 +1,28 @@
+@use "../../../../assets/scss/mixins" as m;
+@use "../../../../assets/scss/variables" as v;
+
+.TabBarnavbar {
+  background-color: v.$color1;
+  opacity: .8;
+
+  .contact {
+    text-align: left;
+  }
+
+  .login {
+    text-align: right;
+
+    span {
+      color: wheat !important;
+      display: flex;
+      justify-content: center;
+      vertical-align: bottom;
+    }
+  }
+
+  .text-color {
+    color: wheat !important;
+  }
+
+
+}

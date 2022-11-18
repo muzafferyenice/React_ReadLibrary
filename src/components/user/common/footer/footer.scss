@@ -1,0 +1,33 @@
+@use "../../../../assets/scss/mixins" as m;
+@use "../../../../assets/scss/variables" as v;
+
+.Footernavbar {
+    background-color: v.$color1;
+    opacity: .8;
+
+
+    .FooternavbarLogo {
+        text-align: left;
+
+        img {
+            width: 8rem;
+        }
+    }
+
+    .FooternavbarRigth {
+        text-align: right;
+
+        span {
+            color: wheat !important;
+            display: flex;
+            justify-content: center;
+            vertical-align: bottom;
+        }
+    }
+
+    p {
+        color: wheat !important;
+    }
+
+
+}

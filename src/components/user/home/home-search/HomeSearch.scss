@@ -1,0 +1,21 @@
+@use "../../../../assets/scss/mixins" as m;
+@use "../../../../assets/scss/variables" as v;
+
+.searchText {
+    border-radius: 10px 0px 0px 10px !important;
+}
+
+.searchSelect {
+    border-radius: 0px 00px 00px 0px !important;
+
+}
+
+.searchButton {
+    border-radius: 0px 10px 10px 0px !important;
+    width: 10px;
+    height: 10px;
+
+    .searchicon {
+        transform: translate(-12px, -13px);
+    }
+}

@@ -1,0 +1,32 @@
+@use "../../../../assets/scss/mixins" as m;
+@use "../../../../assets/scss/variables" as v;
+
+.MenuBarnavbar {
+    background-color: v.$color2;
+    opacity: .5;
+
+    .contact {
+        text-align: left;
+
+        img {
+            width: 8rem;
+        }
+    }
+
+    .login {
+        text-align: right;
+
+        span {
+            color: wheat !important;
+            display: flex;
+            justify-content: center;
+            vertical-align: bottom;
+        }
+    }
+
+    .text-color {
+        color: wheat !important;
+    }
+
+
+}

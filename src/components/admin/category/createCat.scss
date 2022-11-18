@@ -1,0 +1,23 @@
+@use "../../../assets/scss/mixins" as m;
+@use "../../../assets/scss/variables" as v;
+
+.create {
+  background-color: v.$color2;
+
+  input {
+    padding: 0.5rem 10rem;
+    border-radius: 20px;
+  }
+  .btn-new {
+    background-color: v.$color4;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: v.$color1;
+  }
+}
+.lrl {
+  width: 100vw;
+  height: 100vh;
+  font-size: 2rem;
+  margin-left: 120px;
+}

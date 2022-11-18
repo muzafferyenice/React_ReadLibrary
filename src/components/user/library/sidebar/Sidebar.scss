@@ -1,0 +1,28 @@
+@use "../../../../assets/scss/variables" as v;
+
+.sidebar-container {
+  margin: 3rem 0 3rem 0;
+  overflow-y: scroll;
+
+  .sidebar-col {
+    background-color: v.$color1;
+    p {
+      color: v.$color3;
+      position: absolute;
+      transform: translateY(50%);
+      
+    }
+
+    button {
+        display: flex;
+        font-size: 16px;
+        font-weight: 600;
+       
+     background-color: v.$color4;
+      margin: 1rem;
+      padding: .5rem 4.5rem 0 4.5rem;
+      color: v.$color1;
+    
+    }
+  }
+}
