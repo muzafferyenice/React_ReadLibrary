@@ -5,7 +5,13 @@ import BreadCrump from "../../../components/admin/common/BreadCrump";
 const CategoriesEditPage = () => {
   return (
     <>
-      <BreadCrump />
+      <BreadCrump
+        title1="DashBoard"
+        title3="Categories Edit"
+        link1="/budak"
+        link2="/budak/categories"
+        title2="Categories"
+      />
       <CategoryUpdateForm />
     </>
   );

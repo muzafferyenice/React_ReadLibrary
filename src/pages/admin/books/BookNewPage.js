@@ -5,7 +5,13 @@ import BreadCrump from "../../../components/admin/common/BreadCrump";
 const BookNewPage = () => {
   return (
     <div>
-      <BreadCrump />
+      <BreadCrump
+        title1="DashBoard"
+        title3="New Books"
+        link1="/budak"
+        link2="/budak/books"
+        title2="Books"
+      />
       <BookCreateForm />
     </div>
   );

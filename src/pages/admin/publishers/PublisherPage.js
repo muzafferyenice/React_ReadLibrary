@@ -6,7 +6,7 @@ import PublisherSearch from "../../../components/admin/publisher/PublisherSearch
 const PublisherPage = () => {
   return (
     <>
-      <BreadCrump />
+      <BreadCrump title1="DashBoard" title3="Publishers" link1="/budak" />
       <PublisherSearch />
       <Publishers />
     </>

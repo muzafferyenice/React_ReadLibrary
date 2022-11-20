@@ -17,7 +17,7 @@ export const getLoanWithIdMember = (id) => {
   return axios.get(`${API_URL}/loans/${id}`);
 };
 
-export const updateLoan = (loan, id) => {
+export const updateLoan = (id, loan) => {
   console.log(loan);
   console.log(id);
   return axios.put(`${API_URL}/loans/${id}`, loan, { headers: authHeader() });

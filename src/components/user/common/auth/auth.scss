@@ -2,66 +2,48 @@
 @use "../../../../assets/scss/mixins" as m;
 
 .auth {
-  img {
-    margin: 0px 650px 400px 0px;
-    width: 15vw;
-    height: 15vh;
+  background-image: url("required(../../../../../../assets/img/bg/pageheader.png");
+  height: auto;
+  background-size: cover;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 11rem;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 900px;
+    background-color: v.$color4;
+    opacity: 0.3;
   }
-  div[class^="col"] {
-    &:first-child {
-      min-height: 100vh;
-      background-image: url("../../../../assets/img/logo/logoReadLib.png");
-      background-size: cover;
-      background-position: top center;
-      background-repeat: no-repeat;
-      position: relative;
-      @include m.flexbox(row, center, center, 0);
+  .card {
+    z-index: 5;
+    background-color: v.$color1;
+    border-radius: 2rem 0 2rem 0;
+    width: 350px;
+    height: auto;
+    margin: 3rem;
 
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: v.$color2;
-        opacity: 0.9;
-      }
-
-      @media (max-width: 991px) {
-        min-height: auto;
-        height: 100px;
+    .login-register {
+      margin-top: 8rem;
+      &:first-child {
+        /*  button{
+          background-color:v.$color4;
+          padding: 3rem 0 3rem 0;
+        } */
       }
     }
 
-    &:last-child {
-      padding: 4rem;
-    }
-
-    img {
-      position: relative;
-      z-index: 10;
-
-      @media (max-width: 991px) {
-        width: 150px;
-        height: auto;
-      }
-    }
-
-    .toolbar {
+    .users-svg {
+      background-color: v.$color3;
+      width: 7em;
+      height: 7em;
+      border-radius: 50%;
+      border: 0.3rem solid v.$color4;
       position: absolute;
-      top: 1rem;
-      left: 1rem;
-      color: v.$color1;
-      z-index: 10;
-      font-size: 3rem;
-      cursor: pointer;
 
-      svg {
-        &:hover {
-          color: white;
-        }
-      }
+      transform: translate(-15%, -10%);
     }
   }
 }

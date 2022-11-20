@@ -1,11 +1,25 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { HiUserGroup } from "react-icons/hi";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../../../../store/slices/AuthSlice";
+import { question } from "../../../../utils/functions/swal";
 import "./ProfileMenu.scss";
-
+import secureLocalStorage from "react-secure-storage";
 const ProfileMenu = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    question("Are you sure to signout?").then((result) => {
+      if (result.isConfirmed) {
+        dispatch(logout());
+        secureLocalStorage.removeItem("token");
+        navigate("/");
+      }
+    });
+  };
+
   return (
     <Container fluid className="profileMenu">
       <Row className="profile-row">
@@ -30,7 +44,7 @@ const ProfileMenu = () => {
                   className="form-check-label active"
                   for="flexCheckDefault"
                   onClick={() => {
-                    navigate("/user-info");
+                    navigate("/user-information");
                   }}
                 >
                   User Information
@@ -77,7 +91,7 @@ const ProfileMenu = () => {
                   className="form-check-label"
                   for="flexCheckDefault"
                   onClick={() => {
-                    navigate("/");
+                    handleLogout();
                   }}
                 >
                   Logout

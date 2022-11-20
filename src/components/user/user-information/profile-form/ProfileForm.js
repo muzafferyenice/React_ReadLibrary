@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "../../../../utils/functions/swal";
 import {
+  getUserByIdAll,
   updateUserByAdmin,
   updateUserByEmployee,
 } from "../../../../api/user-service";
@@ -18,7 +19,7 @@ const ProfileForm = () => {
   const isUserLogin = useSelector((state) => state.auth.isUserLogin);
 
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
+  console.log(user.id);
 
   const initialValues = {
     firstName: user.firstName,
@@ -61,7 +62,7 @@ const ProfileForm = () => {
     setLoading(true);
     /* console.log("values =" + values); */
     try {
-      await updateUserByAdmin(98, values);
+      await updateUserByAdmin(user.id, values);
       console.log(values);
       /* console.log("values =" + values); */
       toast("Your profile was updated successfully!", "successfully");

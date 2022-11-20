@@ -6,7 +6,7 @@ import BreadCrump from "../../../components/admin/common/BreadCrump";
 const AuthorsPage = () => {
   return (
     <>
-      <BreadCrump />
+      <BreadCrump title1="DashBoard" title3="Authors" link1="/budak" />
       <AuthorSearch />
       <Authors />
     </>

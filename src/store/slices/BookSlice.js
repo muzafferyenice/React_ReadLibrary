@@ -1,17 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const bookSlice = createSlice({
-  name: "book",
+export const bookSearchSlice = createSlice({
+  name: "booksearch",
   initialState: {
-    bookList: [],
+    book: [],
   },
   reducers: {
-    load: (state, action) => {
-      state.bookList = action.payload.books;
+    setBook: (state, action) => {
+      state.book = action.payload;
     },
   },
 });
 
-export const { load } =
-  bookSlice.actions;
-export default bookSlice.reducer;
+export const { setBook } = bookSearchSlice.actions;
+export default bookSearchSlice.reducer;

@@ -15,7 +15,7 @@ const Loan = () => {
 
   const columns = [
     {
-      name: "id",
+      name: "Loan Id",
       selector: (row) => row.id,
     },
     {

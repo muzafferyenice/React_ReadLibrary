@@ -1,0 +1,13 @@
+@use "../../../../../assets/scss/mixins" as m;
+@use "../../../../../assets/scss/variables" as v;
+
+.bookCard1 {
+  width: 10rem !important;
+  height: 23rem !important;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 2px;
+  img {
+    height: 13rem !important;
+  }
+}

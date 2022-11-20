@@ -6,7 +6,13 @@ import "./cat.scss";
 const CategoryNewPage = () => {
   return (
     <div>
-      <BreadCrump />
+      <BreadCrump
+        title1="DashBoard"
+        title3="New Category"
+        link1="/budak"
+        link2="/budak/categories"
+        title2="Categories"
+      />
       <CreateCat />
     </div>
   );

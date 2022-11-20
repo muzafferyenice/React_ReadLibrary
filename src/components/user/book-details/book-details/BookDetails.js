@@ -4,6 +4,7 @@ import { getBookById } from "../../../../api/book-service";
 import "./BookDetail.scss";
 import BookDetailPage from "../../../../pages/visitor/BookDetailPage";
 import { useParams } from "react-router-dom";
+import Spacer from "../../../common/spacer/Spacer";
 
 const BookDetails = () => {
   const [books, setBooks] = useState([]);
@@ -35,6 +36,7 @@ const BookDetails = () => {
   return (
     <>
       <Container className="detailBook">
+        <Spacer height={50} />
         <Row>
           <Col md="4">
             <Card>
@@ -48,46 +50,50 @@ const BookDetails = () => {
           <Col md="8">
             <h3>{books.name}</h3>
             <Row className="p-2">
-              <Col md="3">Author</Col>
-              <Col md="9">{books.authorName}</Col>
+              <Col md="5">Author :</Col>
+              <Col md="7">{books.authorName}</Col>
             </Row>
+            <hr />
             <Row className="p-2">
-              <Col md="3">Publisher:</Col>
-              <Col md="9">{books.publisherName}</Col>
+              <Col md="5">Publisher :</Col>
+              <Col md="7">{books.publisherName}</Col>
             </Row>
+            <hr />
             <Row className="p-2">
-              <Col md="3">ISBN:</Col>
-              <Col md="9">{books.isbn}</Col>
+              <Col md="5">ISBN :</Col>
+              <Col md="7">{books.isbn}</Col>
             </Row>
+            <hr />
             <Row className="p-2">
-              <Col md="3">Page Count:</Col>
-              <Col md="9">{books.pageCount}</Col>
+              <Col md="5">Page Count :</Col>
+              <Col md="7">{books.pageCount}</Col>
             </Row>
+            <hr />
             <Row className="p-2">
-              <Col md="3">Publish Date:</Col>
-              <Col md="9">{books.publishDate}</Col>
+              <Col md="5">Publish Date :</Col>
+              <Col md="7">{books.publishDate}</Col>
             </Row>
+            <hr />
             <Row className="p-2">
-              <Col md="3">Category:</Col>
-              <Col md="9">{books.categoryName}</Col>
+              <Col md="5">Category :</Col>
+              <Col md="7">{books.categoryName}</Col>
             </Row>
+            <hr />
             <Row className="p-2">
-              <Col md="4">Available:</Col>
-              <Col md="9">{books.featured}</Col>
+              <Col md="5">Available :</Col>
+              <Col md="7">
+                {books.featured && <Form.Check type="checkbox" checked />}
+              </Col>
             </Row>
+            <hr />
             <Row className="p-2">
-              <Col md="4">Shelf code </Col>
-              <Col md="9">{books.shelfCode}</Col>
+              <Col md="5">Shelf code : </Col>
+              <Col md="7">{books.shelfCode}</Col>
             </Row>
+            <hr />
           </Col>
         </Row>
-
-        <div style={{ height: 60 }}></div>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-
-        <div style={{ height: 60 }}></div>
+        <Spacer height={200} />
       </Container>
     </>
   );

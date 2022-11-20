@@ -1,31 +1,29 @@
 import React, { useState } from "react";
 import { Card, Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import "./auth.scss";
-import logo from "../../../../assets/img/logo/logo1.png";
-import { RiCloseCircleLine, RiHome7Line } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import LoginForm from "./login-form";
 import RegisterForm from "./register-form";
+import { useEffect } from "react";
+import { HiUserGroup } from "react-icons/hi";
 
 const Auth = () => {
   const [defaultTab, setDefaultTab] = useState(
     window.location.href.split("auth/")[1]
   );
+
+  const [searchParams] = useSearchParams();
+
   const navigate = useNavigate();
+
   return (
     <Container fluid className="auth">
-      <Row>
-        <Col lg={7}>
-          <img src={logo} alt="READLibrary" />
-          <div className="toolbar">
-            <RiCloseCircleLine onClick={() => navigate(-1)} />{" "}
-            {/* Tıklandığında bir önceki sayfaya yönlendirir */}
-            <RiHome7Line onClick={() => navigate("/")} />
-          </div>
-        </Col>
+      <Row className="auth-row">
+        <Col lg={7}></Col>
         <Col lg={5}>
-          <Card>
-            <Card.Body>
+          <Card className="card">
+            <HiUserGroup className="users-svg" />
+            <Card.Body className="login-register">
               <Tabs
                 activeKey={defaultTab}
                 onSelect={(k) => setDefaultTab(k)}

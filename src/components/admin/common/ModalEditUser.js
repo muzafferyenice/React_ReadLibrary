@@ -34,9 +34,9 @@ const ModalEditUser = (props) => {
   const initialValues = {
     notes: id.notes,
     expireDate: getDate(id.expireDate),
-    expireTime: getTime(id.expireDate),
+    expireTime: "",
     returnDate: getDate(id.returnDate),
-    returnTime: getTime(id.returnDate),
+    returnTime: "",
   };
   const validationSchema = Yup.object({
     notes: Yup.string().required("Please enter notes"),
@@ -57,8 +57,11 @@ const ModalEditUser = (props) => {
         expireDate: combineDateAndTime(expireDate, expireTime),
         returnDate: combineDateAndTime(returnDate, returnTime),
       };
+      if (dto.returnDate.includes("Invalid date")) {
+        dto.returnDate = "";
+      }
 
-      const resp = await updateLoan(dto, id);
+      const resp = await updateLoan(id.id, dto);
       console.log(resp.data);
       setLoans(resp.data);
       onHide();

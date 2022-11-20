@@ -3,16 +3,18 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
 import "./adminMenu.scss";
 
-const BreadCrump = () => {
+const BreadCrump = (props) => {
   return (
     <Breadcrumb className="brdcrmp">
-      <Breadcrumb.Item as={Link} to="/admin">
-        Dashboard
+      <Breadcrumb.Item linkProps={{ to: props.link1 }} linkAs={Link}>
+        {props.title1}
       </Breadcrumb.Item>
-      <Breadcrumb.Item href="http://trartofcoding.com/">
-        Library
+
+      <Breadcrumb.Item linkProps={{ to: props.link2 }} linkAs={Link}>
+        {props.title2}
       </Breadcrumb.Item>
-      <Breadcrumb.Item active>Data</Breadcrumb.Item>
+
+      <Breadcrumb.Item active> {props.title3}</Breadcrumb.Item>
     </Breadcrumb>
   );
 };

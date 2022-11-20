@@ -5,7 +5,7 @@ import Reports from "../../../components/admin/reports/Reports";
 const ReportsPage = () => {
   return (
     <>
-      <BreadCrump />
+      <BreadCrump title1="DashBoard" title3="Reports" link1="/budak" />
       <Reports />
     </>
   );

@@ -8,7 +8,13 @@ import Spacer from "../../../components/common/spacer/Spacer";
 const UserEditPage = () => {
   return (
     <>
-      <BreadCrump />
+      <BreadCrump
+        title1="DashBoard"
+        title3="Users Edit"
+        link1="/budak"
+        link2="/budak/users"
+        title2="Users"
+      />
 
       <UserUpdateForm />
       <Spacer />

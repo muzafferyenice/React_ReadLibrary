@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import PasswordInput from "../../../common/password-input/password-input";
 import { register } from "../../../../api/user-service";
 import { toast } from "../../../../utils/functions/swal";
+import { getDate } from "../../../../utils/functions/date-time";
 
 const RegisterForm = ({ setDefaultTab }) => {
   const [loading, setLoading] = useState(false);
@@ -21,15 +22,26 @@ const RegisterForm = ({ setDefaultTab }) => {
   };
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().required("Please enter your first name"),
+    firstName: Yup.string()
+      .required("Please enter your first name")
+      .min(2, "Must be at least 2 character")
+      .max(30, "Must be a maximum of 30 characters "),
     lastName: Yup.string().required("Please enter your last name"),
-    address: Yup.string().required("Please enter your address"),
+    address: Yup.string()
+      .required("Please enter your address")
+      .min(10, "Must be at least 10 character")
+      .max(100, "Must be a maximum of 100 characters "),
     phone: Yup.string().required(),
     birthDate: Yup.string().required("Please enter your birthDate"),
-    email: Yup.string().email().required("Please enter your email"),
+    email: Yup.string()
+      .email()
+      .required("Please enter your email")
+      .min(10, "Must be at least 10 character")
+      .max(80, "Must be a maximum of 80 characters "),
     password: Yup.string()
       .required("Please enter your password")
       .min(8, "Must be at least 8 characters")
+      .max(15, "Must be a maximum of 100 characters ")
       .matches(/[a-z]+/, "One lowercase character")
       .matches(/[A-Z]+/, "One uppercase character")
       .matches(/[@$!%*#?&]+/, "One special character")
@@ -40,6 +52,7 @@ const RegisterForm = ({ setDefaultTab }) => {
     setLoading(true);
     try {
       await register(values);
+      console.log(values);
       toast("You're registered successfully!", "success");
       formik.resetForm();
       setDefaultTab("login");
@@ -48,6 +61,7 @@ const RegisterForm = ({ setDefaultTab }) => {
     } finally {
       setLoading(false);
     }
+    console.log("firstName = " + values.firstName);
   };
 
   const formik = useFormik({
@@ -59,9 +73,9 @@ const RegisterForm = ({ setDefaultTab }) => {
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
       <Form.Group className="mb-3">
-        <Form.Label>First Name</Form.Label>
         <Form.Control
           type="text"
+          placeholder="First Name"
           {...formik.getFieldProps("firstName")}
           isInvalid={formik.touched.firstName && formik.errors.firstName}
           isValid={formik.touched.firstName && !formik.errors.firstName}
@@ -71,9 +85,9 @@ const RegisterForm = ({ setDefaultTab }) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Last Name</Form.Label>
         <Form.Control
           type="text"
+          placeholder="Last Name"
           {...formik.getFieldProps("lastName")}
           isInvalid={formik.touched.lastName && formik.errors.lastName}
           isValid={formik.touched.lastName && !formik.errors.lastName}
@@ -83,9 +97,9 @@ const RegisterForm = ({ setDefaultTab }) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Address</Form.Label>
         <Form.Control
           type="text"
+          placeholder="Address"
           {...formik.getFieldProps("address")}
           isInvalid={formik.touched.address && formik.errors.address}
           isValid={formik.touched.address && !formik.errors.address}
@@ -95,9 +109,9 @@ const RegisterForm = ({ setDefaultTab }) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Phone</Form.Label>
         <Form.Control
           type="text"
+          placeholder="Phone"
           as={InputMask}
           mask="(999) 999-9999"
           {...formik.getFieldProps("phone")}
@@ -109,21 +123,19 @@ const RegisterForm = ({ setDefaultTab }) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Birth Date</Form.Label>
         <Form.Control
-          type="text"
+          type="date"
+          placeholder="Birth Date"
           {...formik.getFieldProps("birthDate")}
-          isInvalid={formik.touched.birthDate && formik.errors.birthDate}
-          isValid={formik.touched.birthDate && !formik.errors.birthDate}
         />
         <Form.Control.Feedback type="invalid">
           {formik.errors.birthDate}
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Email</Form.Label>
         <Form.Control
           type="email"
+          placeholder="Email"
           {...formik.getFieldProps("email")}
           isInvalid={formik.touched.email && formik.errors.email}
           isValid={formik.touched.email && !formik.errors.email}
@@ -133,7 +145,6 @@ const RegisterForm = ({ setDefaultTab }) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Password</Form.Label>
         <PasswordInput
           {...formik.getFieldProps("password")}
           isInvalid={formik.touched.password && formik.errors.password}
@@ -142,7 +153,7 @@ const RegisterForm = ({ setDefaultTab }) => {
         />
       </Form.Group>
 
-      <Button variant="danger" type="submit" disabled={loading}>
+      <Button variant="primary" type="submit" disabled={loading}>
         {loading && <Spinner animation="border" size="sm" />} Register
       </Button>
     </Form>

@@ -2,8 +2,8 @@
 @use "../../../../assets/scss/variables" as v;
 
 .TabBarnavbar {
-  background-color: v.$color1;
-  opacity: .8;
+  background-color: v.$color2;
+  opacity: 0.8;
 
   .contact {
     text-align: left;
@@ -23,6 +23,4 @@
   .text-color {
     color: wheat !important;
   }
-
-
 }

@@ -3,12 +3,14 @@ import { Button } from "react-bootstrap";
 import "./createCat.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import { createCategory } from "../../../api/category-service";
+import { toast } from "../../../utils/functions/swal";
+import { useNavigate } from "react-router-dom";
 
 const CreateCat = () => {
   const [text, setText] = useState("");
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const handleCategory = async (text) => {
     setLoading(true);
     try {
@@ -18,6 +20,8 @@ const CreateCat = () => {
       const resp = await createCategory(dto);
       const list = Object.entries(resp.data);
       setCategories(list);
+      toast("Category was created", "success");
+      navigate(-1);
 
       console.log(resp);
     } catch (err) {
@@ -48,9 +52,8 @@ const CreateCat = () => {
         </Button>
         {loading && <div>{categories}ss</div>}
       </div>
-      <div className="lrl">
-        <img src={require("../../../assets/img/logo/lrl.png")} />
-      </div>
+
+      <img className="logo" src={require("../../../assets/img/logo/lrl.png")} />
     </>
   );
 };

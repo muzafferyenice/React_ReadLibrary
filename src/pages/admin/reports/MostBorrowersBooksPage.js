@@ -4,7 +4,13 @@ import BreadCrump from "../../../components/admin/common/BreadCrump";
 const MostBorrowersBooksPage = () => {
   return (
     <div>
-      <BreadCrump />
+      <BreadCrump
+        title1="DashBoard"
+        title3="Most Borrowers Books"
+        link1="/budak"
+        link2="/budak/reports"
+        title2="Reports"
+      />
       <MostBorrowersBooks />
     </div>
   );

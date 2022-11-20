@@ -5,7 +5,7 @@ import BreadCrump from "../../../components/admin/common/BreadCrump";
 const BooksPage = () => {
   return (
     <>
-      <BreadCrump />
+      <BreadCrump title1="DashBoard" title3="Books" link1="/budak" />
       <SearchBar />
     </>
   );

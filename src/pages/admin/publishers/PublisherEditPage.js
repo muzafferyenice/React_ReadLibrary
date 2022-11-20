@@ -5,7 +5,13 @@ import PublisherUpdateForm from "../../../components/admin/publisher/PublisherUp
 const PublisherEditPage = () => {
   return (
     <>
-      <BreadCrump />
+      <BreadCrump
+        title1="DashBoard"
+        title3="Publishers Edit"
+        link1="/budak"
+        link2="/budak/publishers"
+        title2="Publishers"
+      />
       <PublisherUpdateForm />
     </>
   );

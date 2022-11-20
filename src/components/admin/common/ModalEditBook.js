@@ -34,9 +34,9 @@ const ModalEditBook = (props) => {
   const initialValues = {
     notes: id.notes,
     expireDate: getDate(id.expireDate),
-    expireTime: getTime(id.expireDate),
+    expireTime: "",
     returnDate: getDate(id.returnDate),
-    returnTime: getTime(id.returnDate),
+    returnTime: "",
   };
   const validationSchema = Yup.object({
     notes: Yup.string().required("Please enter notes"),
@@ -51,20 +51,22 @@ const ModalEditBook = (props) => {
     setLoading(true);
 
     const { notes, expireDate, expireTime, returnDate, returnTime } = values;
+    const dto = {
+      notes,
+      expireDate: combineDateAndTime(expireDate, expireTime),
+      returnDate: combineDateAndTime(returnDate, returnTime),
+    };
     try {
-      const dto = {
-        notes,
-        expireDate: combineDateAndTime(expireDate, expireTime),
-        returnDate: combineDateAndTime(returnDate, returnTime),
-      };
-
-      const resp = await updateLoan(dto, id);
+      if (dto.returnDate.includes("Invalid date")) {
+        dto.returnDate = "";
+      }
+      const resp = await updateLoan(id.id, dto);
       console.log(resp.data);
       setLoans(resp.data);
       onHide();
       toast("Loan Uptated successfully", "success");
     } catch (err) {
-      console.log(err);
+      console.log(dto.returnDate);
       toast("An error occured, please try later");
     } finally {
       setLoading(false);
@@ -134,6 +136,9 @@ const ModalEditBook = (props) => {
                     <Form.Control
                       type="time"
                       {...formik.getFieldProps("returnTime")}
+                      isInvalid={
+                        formik.touched.expireTime && formik.errors.expireTime
+                      }
                     />
                   </InputGroup>
                 </Form.Group>

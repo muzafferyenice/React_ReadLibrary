@@ -7,7 +7,13 @@ import Spacer from "../../../components/common/spacer/Spacer";
 const BookEditPage = () => {
   return (
     <>
-      <BreadCrump />
+      <BreadCrump
+        title1="DashBoard"
+        title3="Books Edit"
+        link1="/budak"
+        link2="/budak/books"
+        title2="Books"
+      />
       <BookEditForm />
       <Spacer />
       <LoanForm />

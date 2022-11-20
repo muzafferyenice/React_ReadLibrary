@@ -1,0 +1,25 @@
+@use "../../../../../assets/scss/variables" as v;
+
+.sidebarcard {
+  background-color: v.$color2 !important;
+  border-radius: 2rem;
+
+  height: 300px;
+  width: 100%;
+
+  .sidebarText {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 250px;
+    color: wheat !important;
+  }
+
+  .sidebarTitle {
+    color: v.$color4 !important;
+  }
+
+  .chk {
+    margin-left: 2rem;
+    padding-left: 1rem;
+  }
+}

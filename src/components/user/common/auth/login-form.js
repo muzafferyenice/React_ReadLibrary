@@ -32,41 +32,25 @@ const LoginForm = () => {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
+      console.log(values);
       const respAuth = await login(values);
-      toast("You're login successfully!", "success");
       secureLocalStorage.setItem("token", respAuth.data.token);
 
       const respUser = await getUserAuthUser();
       console.log(respUser.data.id);
-      const respUserAllDatas = await getUserByIdAll(respUser.data.id);
-      console.log(respUserAllDatas.data);
-      /*   const obj = JSON.stringify(respUserAllDatas.data); */
-      /*  const {
-        firstName,
-        lastName,
-        address,
-        phone,
-        birthDate,
-        email,
-        password,
-      } = obj;
 
-      const dto = {
-        firstName,
-        lastName,
-        address,
-        phone,
-        birthDate,
-        email,
-        password,
-      };
-      console.log(obj); */
-      dispatch(loginSuccess(respUserAllDatas.data));
+      const userAll = await getUserByIdAll(respUser.data.id);
 
-      navigate("/");
+      console.log(respUser);
+
+      console.log(userAll);
+
+      dispatch(loginSuccess(userAll.data));
+
+      navigate("/user-information");
     } catch (err) {
       dispatch(loginFailed());
-      toast("an error occured", "error");
+      toast(err.response.data.message, "error");
     } finally {
       setLoading(false);
     }
@@ -79,8 +63,8 @@ const LoginForm = () => {
   });
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
-      <Form.Group className="mb-3">
-        <Form.Label>Email address</Form.Label>
+      <Form.Group className="mb-3" placeholder="Email">
+        {/* <Form.Label>Email address</Form.Label> */}
         <Form.Control
           type="email"
           {...formik.getFieldProps("email")}
@@ -91,16 +75,25 @@ const LoginForm = () => {
           {formik.errors.email}
         </Form.Control.Feedback>
       </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Password</Form.Label>
+      <Form.Group className="mb-3" placeholder="Password">
+        {/* <Form.Label>Password</Form.Label> */}
         <PasswordInput
+          className="goz"
           {...formik.getFieldProps("password")}
           isInvalid={formik.touched.password && formik.errors.password}
           isValid={formik.touched.password && !formik.errors.password}
           error={formik.errors.password}
         />
       </Form.Group>
-      <Button variant="primary" type="submit" disabled={loading}>
+      <Button
+        type="submit"
+        disabled={loading}
+        style={{
+          backgroundColor: "#e9f548",
+          color: "#005555",
+          padding: ".5rem 8.5rem .5rem 8.5rem",
+        }}
+      >
         {loading && <Spinner animation="border" size="sm" />} Login
       </Button>
     </Form>

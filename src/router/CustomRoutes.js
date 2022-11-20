@@ -32,6 +32,8 @@ import AccountPage from "../pages/visitor/AccountPage";
 import UserInformationPage from "../pages/user/UserInformationPage";
 import ContactPage from "../pages/visitor/ContactPage";
 import MyBooksPage from "../pages/user/MyBooksPage";
+import UnauthorizedPage from "../pages/common/UnauthorizedPage";
+
 const CustomRoutes = () => {
   return (
     <BrowserRouter>
@@ -46,6 +48,31 @@ const CustomRoutes = () => {
               </UserTemplate>
             }
           />
+
+          <Route
+            path="user-information"
+            element={
+              <UserTemplate>
+                <UserInformationPage />
+              </UserTemplate>
+            }
+          />
+          <Route
+            path="auth"
+            element={
+              <UserTemplate>
+                <AccountPage />
+              </UserTemplate>
+            }
+          />
+          {/*       <Route
+            path="auth/register"
+            element={
+              <UserTemplate>
+                <AccountPage />
+              </UserTemplate>
+            }
+          /> */}
           <Route path="books">
             <Route
               index
@@ -75,86 +102,78 @@ const CustomRoutes = () => {
             }
           />
 
-          <Route
-            path="user-info"
-            element={
-              <UserTemplate>
-                <UserInformationPage />
-              </UserTemplate>
-            }
-          />
-
-          <Route
+          {/*  <Route
             path="auth"
             element={
               <UserTemplate>
                 <AccountPage />
               </UserTemplate>
             }
-          />
+          /> */}
 
           <Route path="notfound" element={<NotFound />} />
+          <Route path="unauthorized" element={<UnauthorizedPage />} />
 
           <Route path="budak">
             <Route
               index
               element={
-                /*  <ProtectedRoute admin={true}> */
-                <AdminTemplate>
-                  <DashBoardPage />
-                </AdminTemplate>
-                /*   </ProtectedRoute> */
+                <ProtectedRoute admin={true}>
+                  <AdminTemplate>
+                    <DashBoardPage />
+                  </AdminTemplate>
+                </ProtectedRoute>
               }
             />
             <Route path="reports">
               <Route
                 index
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <ReportsPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <ReportsPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="expired-books"
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <ExpiredBooksPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <ExpiredBooksPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="most-borrowers"
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <MostBorrowersBooksPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <MostBorrowersBooksPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="most-popular"
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <MostPopularBooksPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <MostPopularBooksPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="unreturned-books"
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <UnreturnedBooksPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <UnreturnedBooksPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
             </Route>
@@ -163,21 +182,21 @@ const CustomRoutes = () => {
               <Route
                 index
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <PublisherPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <PublisherPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path=":pubId"
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <PublisherEditPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <PublisherEditPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
             </Route>
@@ -185,32 +204,32 @@ const CustomRoutes = () => {
             <Route
               path="publisher-new-page"
               element={
-                /*  <ProtectedRoute admin={true}> */
-                <AdminTemplate>
-                  <PublisherNewPage />
-                </AdminTemplate>
-                /*    </ProtectedRoute> */
+                <ProtectedRoute admin={true}>
+                  <AdminTemplate>
+                    <PublisherNewPage />
+                  </AdminTemplate>
+                </ProtectedRoute>
               }
             />
             <Route path="authors">
               <Route
                 index
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <AuthorsPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <AuthorsPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path=":authorId"
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <AuthorEditPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <AuthorEditPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
             </Route>
@@ -218,41 +237,41 @@ const CustomRoutes = () => {
             <Route
               path="author-new-page"
               element={
-                /*  <ProtectedRoute admin={true}> */
-                <AdminTemplate>
-                  <AuthorNewPage />
-                </AdminTemplate>
-                /*    </ProtectedRoute> */
+                <ProtectedRoute admin={true}>
+                  <AdminTemplate>
+                    <AuthorNewPage />
+                  </AdminTemplate>
+                </ProtectedRoute>
               }
             />
             <Route
               path="categories"
               element={
-                /*  <ProtectedRoute admin={true}> */
-                <AdminTemplate>
-                  <CategoriesPage />
-                </AdminTemplate>
-                /*    </ProtectedRoute> */
+                <ProtectedRoute admin={true}>
+                  <AdminTemplate>
+                    <CategoriesPage />
+                  </AdminTemplate>
+                </ProtectedRoute>
               }
             />
             <Route
               path=":catId"
               element={
-                /*  <ProtectedRoute admin={true}> */
-                <AdminTemplate>
-                  <CategoriesEditPage />
-                </AdminTemplate>
-                /*    </ProtectedRoute> */
+                <ProtectedRoute admin={true}>
+                  <AdminTemplate>
+                    <CategoriesEditPage />
+                  </AdminTemplate>
+                </ProtectedRoute>
               }
             />
             <Route
               path="category-new-page"
               element={
-                /*  <ProtectedRoute admin={true}> */
-                <AdminTemplate>
-                  <CategoryNewPage />
-                </AdminTemplate>
-                /*    </ProtectedRoute> */
+                <ProtectedRoute admin={true}>
+                  <AdminTemplate>
+                    <CategoryNewPage />
+                  </AdminTemplate>
+                </ProtectedRoute>
               }
             />
 
@@ -260,31 +279,31 @@ const CustomRoutes = () => {
               <Route
                 index
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <UsersPage />
-                  </AdminTemplate>
-                  /*   </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <UsersPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path=":userId"
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <UserEditPage />
-                  </AdminTemplate>
-                  /*  </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <UserEditPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="user-new-page"
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <UserNewPage />
-                  </AdminTemplate>
-                  /*  </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <UserNewPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
             </Route>
@@ -292,31 +311,31 @@ const CustomRoutes = () => {
               <Route
                 index
                 element={
-                  /*  <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <BooksPage />
-                  </AdminTemplate>
-                  /*   </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <BooksPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path=":id"
                 element={
-                  /*     <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <BookEditPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <BookEditPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="book-new-page"
                 element={
-                  /*     <ProtectedRoute admin={true}> */
-                  <AdminTemplate>
-                    <BookNewPage />
-                  </AdminTemplate>
-                  /*    </ProtectedRoute> */
+                  <ProtectedRoute admin={true}>
+                    <AdminTemplate>
+                      <BookNewPage />
+                    </AdminTemplate>
+                  </ProtectedRoute>
                 }
               />
             </Route>

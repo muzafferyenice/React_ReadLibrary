@@ -1,0 +1,40 @@
+@use "../../../../assets/scss/variables" as v;
+
+.sidebar-container {
+  .sidebarbaslik {
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .sidebar-row {
+    margin: 3rem 0 3rem 0;
+  }
+
+  .sidebar-col {
+    background-color: v.$color1;
+
+    p {
+      color: v.$color3;
+    }
+
+    button {
+      display: flex;
+      font-size: 16px;
+      font-weight: 600;
+
+      background-color: v.$color4;
+      margin: 1rem;
+      padding: 0.5rem 4.5rem 0 4.5rem;
+      color: v.$color1;
+    }
+  }
+}
+
+span {
+  display: flex;
+  color: v.$color3;
+  gap: 0.5rem;
+  position: absolute;
+  transform: translateY(50%);
+}

@@ -9,6 +9,7 @@ export const register = (user) => {
 };
 
 export const login = (credentials) => {
+  console.log(credentials);
   return axios.post(`${API_URL}/signin`, credentials);
 };
 

@@ -5,14 +5,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { toast } from "../../../utils/functions/swal";
-import { createBookWithImage } from "../../../api/book-service";
+import { createBook, createBookWithImage } from "../../../api/book-service";
+import { useNavigate } from "react-router-dom";
 
 const BookCreateForm = () => {
   const [imageSrc, setImageSrc] = useState("");
   const [saving, setSaving] = useState(false);
   const [loading, setLoading] = useState(false);
   const fileImageRef = useRef();
-
+  const navigate = useNavigate();
   /*   const getFormData = (object) =>
     Object.keys(object).reduce((formData, key) => {
       formData.append(key, object[key]);
@@ -20,7 +21,6 @@ const BookCreateForm = () => {
     }, new FormData()); */
 
   const initialValues = {
-    imageSrc,
     name: "",
     isbn: "",
     pageCount: 0,
@@ -43,21 +43,33 @@ const BookCreateForm = () => {
     shelfCode: Yup.string().required("Please enter  shelfCode"),
   });
 
-  const onSubmit = async (values, imageSrc) => {
+  const onSubmit = async (values) => {
     console.log(values);
     //const formdt = getFormData(values);
 
-    const formData = new FormData();
+    /*      const formData = new FormData();
 
     const formdt2 = Object.entries(values).forEach(([key, value]) => {
       formData.append(key, value);
-    });
+    });  */
 
     setLoading(true);
     try {
-      await createBookWithImage(formdt2);
+      const dto = {
+        name: values.name,
+        isbn: values.isbn,
+        pageCount: values.pageCount,
+        publisherId: values.publisherId,
+        authorId: values.authorId,
+        publishDate: values.publishDate,
+        categoryId: values.categoryId,
+        shelfCode: values.shelfCode,
+        featured: values.featured,
+      };
+      await createBook(dto);
       toast("book created successfully!", "success");
       formik.resetForm();
+      navigate(-1);
     } catch (err) {
       toast(err.response.data.message, "error");
     } finally {

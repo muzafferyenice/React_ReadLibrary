@@ -75,6 +75,8 @@ const BookEditForm = () => {
       toast("book updated successfully!", "success");
       formik.resetForm();
     } catch (err) {
+      console.log(values2);
+      console.log(params.id);
       toast("An Error Occured", "error");
     } finally {
       setSaving(false);
@@ -86,6 +88,7 @@ const BookEditForm = () => {
     validationSchema,
     onSubmit,
   });
+
   const removeBook = async () => {
     setDeleting(true);
     try {
@@ -98,16 +101,7 @@ const BookEditForm = () => {
       setDeleting(false);
     }
   };
-  const handleDelete = () => {
-    question(
-      "Are you sure to delete?",
-      "You won't be able to revert this!"
-    ).then((result) => {
-      if (result.isConfirmed) {
-        removeBook();
-      }
-    });
-  };
+
   const loadBook = async () => {
     setLoading(true);
     try {
@@ -123,11 +117,21 @@ const BookEditForm = () => {
       setLoading(false);
     }
   };
+  const handleDelete = () => {
+    question(
+      "Are you sure to delete?",
+      "You won't be able to revert this!"
+    ).then((result) => {
+      if (result.isConfirmed) {
+        removeBook();
+      }
+    });
+  };
+
   useEffect(() => {
     loadBook(params.id);
-    console.log(books);
   }, []);
-  console.log(books);
+
   return (
     <>
       {!loading && books.length > 0 && (
@@ -272,7 +276,7 @@ const BookEditForm = () => {
               </Form.Group>
               <Button
                 variant="danger"
-                type="submit"
+                type="button"
                 disabled={deleting}
                 onClick={handleDelete}
               >

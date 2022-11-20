@@ -6,7 +6,7 @@ import UserSearch from "../../../components/admin/users/UserSearch";
 const UsersPage = () => {
   return (
     <>
-      <BreadCrump />
+      <BreadCrump title1="DashBoard" title3="Users" link1="/budak" />
       <UserSearch />
     </>
   );
