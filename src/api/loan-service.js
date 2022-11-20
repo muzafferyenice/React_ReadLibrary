@@ -60,7 +60,7 @@ export const findLoanedBookByBookId = (
   );
 };
 
-export const getLoansWithPageByUserId = (
+export const getLoansWithPageAuthenticatedUser = (
   page = 0,
   size = 20,
   sort = "id",

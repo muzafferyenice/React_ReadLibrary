@@ -3,22 +3,15 @@ import { Card, Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import "./auth.scss";
 import logo from "../../../../assets/img/logo/logo1.png";
 import { RiCloseCircleLine, RiHome7Line } from "react-icons/ri";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoginForm from "./login-form";
 import RegisterForm from "./register-form";
-import { useEffect } from "react";
 
 const Auth = () => {
-  const [searchParams] = useSearchParams();
-
-  const [defaultTab, setDefaultTab] = useState("login");
-
+  const [defaultTab, setDefaultTab] = useState(
+    window.location.href.split("auth/")[1]
+  );
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setDefaultTab(searchParams.get("type") || "login");
-  }, [searchParams]);
-
   return (
     <Container fluid className="auth">
       <Row>

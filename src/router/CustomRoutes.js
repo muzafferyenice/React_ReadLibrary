@@ -28,7 +28,10 @@ import AuthorsPage from "../pages/admin/authors/AuthorsPage";
 import AuthorEditPage from "../pages/admin/authors/AuthorEditPage";
 import AuthorNewPage from "../pages/admin/authors/AuthorNewPage";
 import BookDetailPage from "../pages/visitor/BookDetailPage";
-
+import AccountPage from "../pages/visitor/AccountPage";
+import UserInformationPage from "../pages/user/UserInformationPage";
+import ContactPage from "../pages/visitor/ContactPage";
+import MyBooksPage from "../pages/user/MyBooksPage";
 const CustomRoutes = () => {
   return (
     <BrowserRouter>
@@ -43,15 +46,27 @@ const CustomRoutes = () => {
               </UserTemplate>
             }
           />
+          <Route path="books">
+            <Route
+              index
+              element={
+                <UserTemplate>
+                  <MyBooksPage />
+                </UserTemplate>
+              }
+            ></Route>
+            <Route
+              path=":id"
+              element={
+                <UserTemplate>
+                  <BookDetailPage />
+                </UserTemplate>
+              }
+            />
+          </Route>
+
+          <Route />
           <Route
-            path="book-detail"
-            element={
-              <UserTemplate>
-                <BookDetailPage />
-              </UserTemplate>
-            }
-          />
-          {/*     <Route
             path="contact-page"
             element={
               <UserTemplate>
@@ -59,8 +74,16 @@ const CustomRoutes = () => {
               </UserTemplate>
             }
           />
-         
-        
+
+          <Route
+            path="user-info"
+            element={
+              <UserTemplate>
+                <UserInformationPage />
+              </UserTemplate>
+            }
+          />
+
           <Route
             path="auth"
             element={
@@ -68,7 +91,8 @@ const CustomRoutes = () => {
                 <AccountPage />
               </UserTemplate>
             }
-          /> */}
+          />
+
           <Route path="notfound" element={<NotFound />} />
 
           <Route path="budak">

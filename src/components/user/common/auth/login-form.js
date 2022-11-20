@@ -3,7 +3,11 @@ import { useFormik } from "formik";
 import { Form, Button, Spinner } from "react-bootstrap";
 import * as Yup from "yup";
 import PasswordInput from "../../../common/password-input/password-input";
-import { getUserAuthUser, login } from "../../../../api/user-service";
+import {
+  getUserAuthUser,
+  getUserByIdAll,
+  login,
+} from "../../../../api/user-service";
 import { toast } from "../../../../utils/functions/swal";
 import secureLocalStorage from "react-secure-storage";
 import { useDispatch } from "react-redux";
@@ -29,15 +33,40 @@ const LoginForm = () => {
     setLoading(true);
     try {
       const respAuth = await login(values);
+      toast("You're login successfully!", "success");
       secureLocalStorage.setItem("token", respAuth.data.token);
 
       const respUser = await getUserAuthUser();
-      dispatch(loginSuccess(respUser.data));
+      console.log(respUser.data.id);
+      const respUserAllDatas = await getUserByIdAll(respUser.data.id);
+      console.log(respUserAllDatas.data);
+      /*   const obj = JSON.stringify(respUserAllDatas.data); */
+      /*  const {
+        firstName,
+        lastName,
+        address,
+        phone,
+        birthDate,
+        email,
+        password,
+      } = obj;
+
+      const dto = {
+        firstName,
+        lastName,
+        address,
+        phone,
+        birthDate,
+        email,
+        password,
+      };
+      console.log(obj); */
+      dispatch(loginSuccess(respUserAllDatas.data));
 
       navigate("/");
     } catch (err) {
       dispatch(loginFailed());
-      toast(err.response.data.message, "error");
+      toast("an error occured", "error");
     } finally {
       setLoading(false);
     }

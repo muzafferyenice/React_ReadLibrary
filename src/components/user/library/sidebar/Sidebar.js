@@ -2,14 +2,14 @@ import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { FaFilter } from "react-icons/fa";
 import Author from "./Author/Author";
-import Categories from "./categories/Categories";
+import Category from "./categories/Category";
 import Publisher from "./Publisher/Publisher";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
   return (
     <>
-      <Container fluid className="sidebar-container" >
+      <Container fluid className="sidebar-container">
         <Row className="sidebar-row">
           <Col className="sidebar-col">
             <p>
@@ -33,7 +33,7 @@ const Sidebar = () => {
               />
               Categories
             </p>
-            <Categories />
+            {/*     <Category /> */}
             <p>
               {" "}
               <input
@@ -44,12 +44,11 @@ const Sidebar = () => {
               />
               Publisher
             </p>
-            <Publisher />
+            {/*   <Publisher /> */}
             <Button variant="primary" size="lg">
-            <FaFilter />
+              <FaFilter />
               &nbsp;&nbsp;Filter
-      </Button>
-         
+            </Button>
           </Col>
         </Row>
       </Container>

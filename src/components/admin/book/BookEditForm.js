@@ -5,25 +5,27 @@ import * as Yup from "yup";
 import { question, toast } from "../../../utils/functions/swal";
 import { deleteBook, getBookById, updateBook } from "../../../api/book-service";
 import { useNavigate, useParams } from "react-router-dom";
-const BookEditForm = (props) => {
-  const { book } = props;
-  const { id } = useParams();
+import Loading from "../../common/loading/loading";
+
+const BookEditForm = () => {
   const params = useParams();
   const [loading, setLoading] = useState(false);
+
   const [deleting, setDeleting] = useState(false);
   const [saving, setSaving] = useState(false);
   const [books, setBooks] = useState([]);
   const navigate = useNavigate();
+
   const initialValues = {
-    name: books.name,
-    isbn: books.isbn,
-    pageCount: books.pageCount,
-    publisherName: books.publisherName,
-    authorName: books.authorName,
-    publishDate: books.publishDate,
-    categoryName: books.categoryName,
-    shelfCode: books.shelfCode,
-    featured: books.featured,
+    name: books[1],
+    isbn: books[2],
+    pageCount: books[3],
+    publisherName: books[4],
+    authorName: books[5],
+    publishDate: books[6],
+    categoryName: books[7],
+    shelfCode: books[8],
+    featured: books[9],
   };
 
   const validationSchema = Yup.object({
@@ -37,31 +39,43 @@ const BookEditForm = (props) => {
     shelfCode: Yup.string().required("Please enter  shelfCode"),
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (values) => {
     // debugger;
-    const values = {
-      name: "kral bekir hoca",
+    /*     const values = {
+      name: "Beden Asla Yalan Söylemez",
       isbn: "555-45-55555-99-9",
       pageCount: 150,
-      authorId: 3,
-      publisherId: 4,
+      authorId: 4,
+      publisherId: 26,
       publishDate: 1998,
-      categoryId: 2,
+      categoryId: 8,
       shelfCode: "WF-211",
       active: false,
       featured: true,
+    }; */
+    const values2 = {
+      name: values.name,
+      isbn: values.isbn,
+      pageCount: values.pageCount,
+      authorId: Number(values.authorName),
+      publisherId: Number(values.publisherName),
+      publishDate: values.publishDate,
+      categoryId: Number(values.categoryName),
+      shelfCode: values.shelfCode,
+      active: false,
+      featured: values.featured,
     };
-    console.log(values);
+    console.log(values2);
 
     setSaving(true);
 
     try {
-      await updateBook(values, params.id);
+      await updateBook(values2, params.id);
       console.log(values);
       toast("book updated successfully!", "success");
       formik.resetForm();
     } catch (err) {
-      toast(err.response.data.message, "error");
+      toast("An Error Occured", "error");
     } finally {
       setSaving(false);
     }
@@ -75,7 +89,7 @@ const BookEditForm = (props) => {
   const removeBook = async () => {
     setDeleting(true);
     try {
-      await deleteBook(id);
+      await deleteBook(params.id);
       toast("book was deleted", "success");
       navigate(-1);
     } catch (err) {
@@ -97,9 +111,11 @@ const BookEditForm = (props) => {
   const loadBook = async () => {
     setLoading(true);
     try {
-      const resp = await getBookById(id);
+      const resp = await getBookById(params.id);
+
       console.log(resp.data);
-      setBooks(resp.data);
+
+      setBooks(Object.values(resp.data));
       console.log(books);
     } catch (err) {
       console.log(err);
@@ -108,27 +124,27 @@ const BookEditForm = (props) => {
     }
   };
   useEffect(() => {
-    loadBook();
+    loadBook(params.id);
+    console.log(books);
   }, []);
+  console.log(books);
   return (
     <>
-      {!loading && (
+      {!loading && books.length > 0 && (
         <Form className="book-edit" noValidate onSubmit={formik.handleSubmit}>
           <Row>
-            {book.map((bo, index) => (
-              <Col xl={3} className="image-area" key={index}>
-                <img
-                  src={`/assets/img/books/${bo.name}.jpg`}
-                  className="img-fluid"
-                  alt="..."
-                />
-              </Col>
-            ))}
+            <Col xl={3} className="image-area">
+              <img
+                src={`/assets/img/books/${books[1]}.jpg`}
+                className="img-fluid"
+                alt="..."
+              />
+            </Col>
+
             <Col className="form" xl={9}>
               <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                  value={formik.values.name}
                   type="text"
                   {...formik.getFieldProps("name")}
                   isInvalid={formik.touched.name && formik.errors.name}
@@ -272,4 +288,5 @@ const BookEditForm = (props) => {
     </>
   );
 };
+
 export default BookEditForm;

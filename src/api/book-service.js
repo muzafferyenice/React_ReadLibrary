@@ -28,6 +28,12 @@ export const createBookWithImage = (book) => {
   return axios.post(`${API_URL}/books`, book, { headers: authHeader() });
 };
 
+export const createBook = (book) => {
+  // console.log(image);
+  console.log(book);
+  return axios.post(`${API_URL}/book`, book, { headers: authHeader() });
+};
+
 export const getAllBooksWithNamesByPage = (
   //yeni eklenen bookid author ve diger name ler geliyor
   page = 0,

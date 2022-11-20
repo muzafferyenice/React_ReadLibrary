@@ -3,52 +3,20 @@ import { Container, Row, Col, Card, Form, Checkbox } from "react-bootstrap";
 import { getBookById } from "../../../../api/book-service";
 import "./BookDetail.scss";
 import BookDetailPage from "../../../../pages/visitor/BookDetailPage";
-
-const columns = [
-  {
-    name: "Id",
-    selector: (row) => row.id,
-  },
-  {
-    name: "Author",
-    selector: (row) => row.author,
-  },
-  {
-    name: "Publisher",
-    selector: (row) => row.publisher,
-  },
-
-  {
-    name: "Book Name",
-    selector: (row) => row.name,
-  },
-  {
-    name: "Isbn",
-    selector: (row) => row.Isbn,
-  },
-  {
-    pageCount: "Page Count",
-    selector: (row) => row.pageCount,
-  },
-  {
-    publishDate: "Publish Date",
-    selector: (row) => row.publishDate,
-  },
-  {
-    category: "Category",
-    selector: (row) => row.category,
-  },
-];
+import { useParams } from "react-router-dom";
 
 const BookDetails = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const params = useParams();
 
-  const loadBooks = async (id) => {
+  const loadBooks = async () => {
+    console.log(params.id);
+
     setLoading(true);
     try {
-      const resp = await getBookById(100);
-      console.log(id);
+      const resp = await getBookById(params.id);
+
       console.log(resp.data);
       setBooks(resp.data);
 
@@ -72,41 +40,44 @@ const BookDetails = () => {
             <Card>
               <img
                 variant="top"
-                src="/assets/img/books/HarryPotter5.jpg"
+                src={`/assets/img/books/${books.name}.jpg`}
                 alt=""
               />
             </Card>
           </Col>
           <Col md="8">
-            {/*  <h3>{books.name}</h3> */}
+            <h3>{books.name}</h3>
             <Row className="p-2">
               <Col md="3">Author</Col>
-              {/*  <Col md="9">{books.Author}</Col> */}
+              <Col md="9">{books.authorName}</Col>
             </Row>
             <Row className="p-2">
               <Col md="3">Publisher:</Col>
-              {/*   <Col md="9">{books.publisher}</Col> */}
+              <Col md="9">{books.publisherName}</Col>
             </Row>
             <Row className="p-2">
-              <Col md="3">Isbn:</Col>
-              {/* <Col md="9">{books.Isbn}</Col> */}
+              <Col md="3">ISBN:</Col>
+              <Col md="9">{books.isbn}</Col>
             </Row>
             <Row className="p-2">
               <Col md="3">Page Count:</Col>
-              {/*  <Col md="9">{books.page}</Col> */}
+              <Col md="9">{books.pageCount}</Col>
             </Row>
             <Row className="p-2">
               <Col md="3">Publish Date:</Col>
-              {/*  <Col md="9">{books.publishDate}</Col> */}
+              <Col md="9">{books.publishDate}</Col>
             </Row>
             <Row className="p-2">
-              <Col md="3">Catedgory:</Col>
-              {/*  <Col md="9">{books.category}</Col> */}
+              <Col md="3">Category:</Col>
+              <Col md="9">{books.categoryName}</Col>
             </Row>
             <Row className="p-2">
               <Col md="4">Available:</Col>
+              <Col md="9">{books.featured}</Col>
+            </Row>
+            <Row className="p-2">
               <Col md="4">Shelf code </Col>
-              <Col md="4">AD-123</Col>
+              <Col md="9">{books.shelfCode}</Col>
             </Row>
           </Col>
         </Row>

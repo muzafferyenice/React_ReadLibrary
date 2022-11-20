@@ -3,12 +3,14 @@ import { Button } from "react-bootstrap";
 import "./createPub.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import { createPublisher } from "../../../api/publisher-service";
+import { useNavigate } from "react-router-dom";
+import { toast } from "../../../utils/functions/swal";
 
 const CreatePub = () => {
   const [text, setText] = useState("");
   const [publishers, setPublishers] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
   const handlePublisher = async (text) => {
     setLoading(true);
     try {
@@ -17,6 +19,9 @@ const CreatePub = () => {
       };
       const resp = await createPublisher(dto);
       setPublishers(resp);
+      toast("Publisher was created", "success");
+      navigate(-1);
+
       console.log(resp);
     } catch (err) {
       console.log(err);

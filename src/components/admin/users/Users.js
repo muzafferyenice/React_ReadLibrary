@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getUsersByPage } from "../../../api/user-service";
 import "./users.scss";
 import Loading from "../../common/loading/loading";
-import ModalEdit from "../common/ModalEdit";
+import ModalEdit from "../common/ModalEditBook";
 import { Button } from "react-bootstrap";
 const Users = () => {
   const [users, setUsers] = useState([]);

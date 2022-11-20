@@ -57,11 +57,15 @@ export const getUsersByPage = (
 };
 
 export const getUserById = (id) => {
-  return axios.get(`${API_URL}/user/${id}`, { headers: authHeader() });
+  return axios.get(`${API_URL}/users/${id}`, { headers: authHeader() });
+};
+export const getUserByIdAll = (id) => {
+  //userin tum ozelliklerini getirir
+  return axios.get(`${API_URL}/users/all/${id}`, { headers: authHeader() });
 };
 
 export const createUser = (user) => {
-  return axios.put(`${API_URL}/users`, user, { headers: authHeader() });
+  return axios.post(`${API_URL}/users`, user, { headers: authHeader() });
 };
 
 export const updateUserByAdmin = (id, user) => {

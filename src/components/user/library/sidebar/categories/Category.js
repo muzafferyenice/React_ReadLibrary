@@ -1,27 +1,24 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Card, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {
-  getAuthorById,
-  getAuthorsByPage,
-} from "../../../../../api/author-service";
-
+  getCategoriesByPage,
+  getCategoryById,
+} from "../../../../../api/category-service";
 import Loading from "../../../../common/loading/loading";
-import "./Author.scss";
-import Authors from "./Authors";
+import Categories from "./Categories";
+import "./Categories.scss";
 
-const Author = () => {
-  const [authors, setAuthors] = useState([]);
+const Category = () => {
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const loadAuthors = async () => {
+  const loadCategories = async () => {
     try {
-      const resp = await getAuthorsByPage();
+      const resp = await getCategoriesByPage();
       console.log(resp.data);
-      setAuthors(resp.data.content);
-      console.log(authors);
+      setCategories(resp.data);
+      console.log(categories);
     } catch (err) {
       console.log(err);
     } finally {
@@ -29,14 +26,14 @@ const Author = () => {
     }
   };
   useEffect(() => {
-    loadAuthors();
+    loadCategories();
   }, []);
 
   return (
     <>
       <Container className="auth-container">
         <Row className="author-row">
-          <Col>{<Authors authors={authors} />}</Col>
+          <Col>{<Categories categories={categories} />}</Col>
         </Row>
       </Container>
 
@@ -45,4 +42,4 @@ const Author = () => {
   );
 };
 
-export default Author;
+export default Category;

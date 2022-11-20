@@ -3,12 +3,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Col, Container, Pagination, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAllBooksWithNamesByPage } from "../../../api/book-service";
-import Loading from "../../common/loading/loading";
-import Spacer from "../../common/spacer/Spacer";
-import Book from "./Book";
+import { getLoansWithPageAuthenticatedUser } from "../../../../api/loan-service";
+
+import Loading from "../../../common/loading/loading";
+import Spacer from "../../../common/spacer/Spacer";
+import MyBook from "./MyBook";
 import "./book.scss";
-const Books = () => {
+const MyBooks = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState({});
@@ -17,17 +18,11 @@ const Books = () => {
   const { id } = useParams();
   const loadData = async (page) => {
     try {
-      const resp = await getAllBooksWithNamesByPage(page, perPage);
+      const resp = await getLoansWithPageAuthenticatedUser(page, perPage);
       console.log(resp.data);
-      const {
-        content,
-        numberOfElements,
-        size,
-        totalElements,
-        totalPages,
-        pageable,
-      } = resp.data;
-      setBooks(content);
+      const { numberOfElements, size, totalElements, totalPages, pageable } =
+        resp.data;
+      setBooks(resp.data);
       setPagination({
         numberOfElements,
         size,
@@ -42,7 +37,7 @@ const Books = () => {
     }
   };
   const handlePage = (id) => {
-    navigate(`/budak/books/${id}`);
+    navigate(`/books/${id}`);
   };
   useEffect(() => {
     loadData(0);
@@ -57,7 +52,7 @@ const Books = () => {
           <Row className="g-5 book">
             {books.map((book, index) => (
               <Col key={index}>
-                <Book {...book} handlePage={() => handlePage(book.id)} />
+                <MyBook {...book} handlePage={() => handlePage(book.id)} />
               </Col>
             ))}
           </Row>
@@ -101,4 +96,4 @@ const Books = () => {
     </Container>
   );
 };
-export default Books;
+export default MyBooks;

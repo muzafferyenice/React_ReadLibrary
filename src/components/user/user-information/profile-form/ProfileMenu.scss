@@ -1,0 +1,61 @@
+@use "../../../../assets/scss/variables" as v;
+
+.profileMenu{
+    width: 300px;
+    height: 600px;
+    background-color: v.$color1;
+    margin: 2rem;
+    border-radius: 3rem 0 3rem 0 ;
+    .profile-row{
+        
+        .profile-col{
+            svg{
+                background-color: v.$color3;
+                width: 7em;
+                height: 7em;
+                border-radius: 50%;
+                border: .3rem solid v.$color4;
+                
+                position: absolute;
+                
+               transform: translate(-15%, -10%);
+                
+
+                
+               
+            } 
+        }
+       
+    }
+    .check-row {
+        margin-top: 170px;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        background-color: v.$color3;
+        border-radius: 2rem 0 2rem 0 ;
+            //opacity: 0.3;
+        ul{
+            list-style: none;
+            border-radius: 2rem;
+            margin: 1rem;
+            padding: 1rem;
+            padding-left: 0;
+           
+            
+            li{
+                font-size: 20px;
+                font-weight: 400px;
+                color: v.$color1;
+                &:hover{
+                    color: v.$color6;
+                    font-weight: 900px;
+                           
+                        }
+                       
+            }
+
+        
+    }
+   
+}
+}

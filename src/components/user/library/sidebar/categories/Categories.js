@@ -1,120 +1,17 @@
 import React from "react";
-import { Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { Container, Form, Row } from "react-bootstrap";
 
-const Categories = () => {
+const Categories = (props) => {
+  const { categories } = props;
   return (
-    <Container className="auth-container">
-      <Row className="author-row">
-        <Col className="author">
-          
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
+    <Container className="categories-container">
+      <Row className="g-5 categories-row">
+        {categories.map((category, index) => (
+          <div className="categories-check-div" key={index}>
+            <Form.Check type="checkbox" />
+            {category.name}
           </div>
-        </Col>
+        ))}
       </Row>
     </Container>
   );

@@ -7,6 +7,7 @@ import { question, toast } from "../../../utils/functions/swal";
 import {
   deleteUserById,
   getUserById,
+  getUserByIdAll,
   updateUserByAdmin,
 } from "../../../api/user-service";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,19 +16,19 @@ import PasswordInput from "../../common/password-input/password-input";
 const UserUpdateForm = () => {
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const { userId } = useParams();
+  const params = useParams();
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
 
   const initialValues = {
-    firstName: "",
-    lastName: "",
-    score: 0,
-    address: "",
-    phone: "",
-    email: "",
-    birthDate: "",
-    password: "",
+    firstName: user.firstName,
+    lastName: user.lastName,
+    score: user.score,
+    address: user.address,
+    phone: user.phone,
+    email: user.email,
+    birthDate: user.birthDate,
+    password: user.password,
   };
 
   const validationSchema = Yup.object({
@@ -50,7 +51,7 @@ const UserUpdateForm = () => {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      await updateUserByAdmin(userId, values);
+      await updateUserByAdmin(params.userId, values);
       toast("updated successfully!", "success");
       formik.resetForm();
     } catch (err) {
@@ -61,6 +62,7 @@ const UserUpdateForm = () => {
   };
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues,
     validationSchema,
     onSubmit,
@@ -69,7 +71,7 @@ const UserUpdateForm = () => {
   const removeUser = async () => {
     setDeleting(true);
     try {
-      await deleteUserById(userId);
+      await deleteUserById(params.userId);
       toast("User was deleted", "success");
       navigate(-1);
     } catch (err) {
@@ -92,15 +94,11 @@ const UserUpdateForm = () => {
 
   const getUserInfo = async () => {
     setLoading(true);
-
     try {
-      const resp = await getUserById(88); //getirmiyuor cors hatasi
-      console.log(userId);
-      console.log(resp.data);
-
-      /*   const list = Object.entries(resp.data); */
-      // setUser(user);
-      console.log(resp.data);
+      const resp = await getUserByIdAll(params.userId);
+      console.log(params.userId);
+      setUser(resp.data);
+      console.log(user);
     } catch (err) {
       console.log(err);
     } finally {
@@ -109,7 +107,7 @@ const UserUpdateForm = () => {
   };
 
   useEffect(() => {
-    getUserInfo(userId);
+    getUserInfo(params.userId);
   }, []);
 
   return (
@@ -212,7 +210,7 @@ const UserUpdateForm = () => {
       </Form.Group>
       <Button
         variant="danger"
-        type="submit"
+        type="button"
         disabled={deleting}
         onClick={handleDelete}
       >

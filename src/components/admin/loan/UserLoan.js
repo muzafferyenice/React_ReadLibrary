@@ -4,10 +4,14 @@ import DataTable from "react-data-table-component";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { findAllLoansByUserId } from "../../../api/loan-service";
 import Loading from "../../common/loading/loading";
-import ModalEdit from "../common/ModalEdit";
+import ModalEdit from "../common/ModalEditBook";
+import ModalEditUser from "../common/ModalEditUser";
 const UserLoan = () => {
-  const setAsReturned = () => {
+  const [loanId, setLoanId] = useState(0);
+  const setAsReturned = (row) => {
     setModalShow(true);
+    setLoanId(row);
+    console.log(loanId);
   };
   const columns = [
     {
@@ -32,7 +36,7 @@ const UserLoan = () => {
         row.returnDate != null ? (
           row.returnDate
         ) : (
-          <Button variant="primary" onClick={() => setAsReturned(row)}>
+          <Button variant="primary" onClick={(e) => setAsReturned(row)}>
             set As Returned
           </Button>
         ),
@@ -88,7 +92,11 @@ const UserLoan = () => {
         onRowClicked={handlePage}
       />
       {modalShow && (
-        <ModalEdit show={modalShow} onHide={() => setModalShow(false)} />
+        <ModalEditUser
+          show={modalShow}
+          id={loanId}
+          onHide={() => setModalShow(false)}
+        />
       )}
     </div>
   );

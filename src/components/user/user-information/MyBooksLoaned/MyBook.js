@@ -1,18 +1,9 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
-const Book = (props) => {
-  const {
-    name,
-    authorName,
-    isbn,
-
-    categoryName,
-    publisherName,
-    featured,
-    shelfCode,
-    handlePage,
-  } = props;
+const MyBook = (props) => {
+  const { expireDate, loanDate, bookId, handlePage } = props;
+  const { name } = bookId;
 
   return (
     <Container onClick={handlePage}>
@@ -29,10 +20,11 @@ const Book = (props) => {
           <div>
             <h3>{name}</h3>
             <div className="book-info">
-              <p>{authorName}</p>
-              <p>{isbn}</p>
-              <p>{shelfCode}</p>
-              <p>available</p>
+              <p>Expire Date</p>
+
+              <p>{expireDate}</p>
+              <p>Loan Date</p>
+              <p>{loanDate}</p>
             </div>
           </div>
         </Col>
@@ -41,4 +33,4 @@ const Book = (props) => {
   );
 };
 
-export default Book;
+export default MyBook;
