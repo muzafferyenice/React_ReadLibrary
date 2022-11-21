@@ -2,15 +2,17 @@
 @use "../../../assets/scss/variables" as v;
 
 .brdcrmp {
-  background-color: v.$color2;
+  background-color: v.$color4;
   a,
   .active {
     color: white !important;
+    //color: v.$color3 !important;
   }
 }
 
 .admin-navbar {
   padding: 2rem !important;
+  background-color: v.$color7;
 
   @media (min-width: 992px) {
     height: 100vh;
@@ -49,6 +51,9 @@
           color: v.$color2;
           margin-top: 3px;
         }
+      }
+      .nav-link:hover {
+        color: v.$color5 !important;
       }
     }
   }

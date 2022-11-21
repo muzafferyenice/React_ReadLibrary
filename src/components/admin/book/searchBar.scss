@@ -1,0 +1,26 @@
+@use "../../../assets/scss/mixins" as m;
+@use "../../../assets/scss/variables" as v;
+
+.p-search{
+    width: 103%;
+    height: auto;
+    min-height: 30px;
+  background-color: v.$color4 !important;
+  justify-content: center;
+
+  .input{     
+     margin: 1rem !important;
+  }
+
+  .icon{
+     background-color: v.$color5 !important;
+     margin: 1rem !important;
+  }
+
+  .btn-new{
+    background-color: v.$color5 !important;
+  }
+  
+
+ 
+}

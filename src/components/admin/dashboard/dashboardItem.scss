@@ -13,22 +13,28 @@
 
 .dashboard-item {
   @include m.flexbox(row, flex-start, flex-start, 30px);
-  width: 20vw;
-  height: 20vh;
+  width: 45%;
+  //max-width:1024px; /*En fazla 1024px olsun  ama  yukardaki width özelliğim de  geçerli olsun*/
+  height: auto;
+  min-height: 200px;
+  margin: auto;
 
   padding: 1rem;
-  background-color: v.$color2;
+  background-color: v.$color7;
   &:hover {
-    background-color: v.$color1;
+    background-color: v.$color4;
     color: v.$color3;
     cursor: pointer;
   }
   svg {
     font-size: 6rem;
+    width: 85%;
     color: v.$color5;
+    object-fit: cover;
   }
 
   .square {
+    justify-content: start;
     font-size: 1rem;
     color: v.$color4;
   }

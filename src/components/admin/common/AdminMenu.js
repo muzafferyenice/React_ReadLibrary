@@ -24,7 +24,14 @@ const AdminMenu = () => {
   };
 
   return (
-    <Navbar bg="primary" expand="lg" className="admin-navbar" variant="dark">
+    <Navbar
+      expand="lg"
+      className="admin-navbar"
+      xs={4}
+      md={4}
+      lg={4}
+      variant="dark"
+    >
       <Container>
         <Navbar.Brand as={Link} to="/budak">
           <img src={logo} className="img-fluid" alt="Admin" />
@@ -53,9 +60,7 @@ const AdminMenu = () => {
             <Nav.Link as={Link} to="/budak/reports">
               Reports
             </Nav.Link>
-            <Nav.Link as={Link} to="http://trartofcoding.com/">
-              Web Site
-            </Nav.Link>
+            <Nav.Link href="http://trartofcoding.com/">Web Site</Nav.Link>
             <Nav.Link onClick={handleLogout}>
               <RiLogoutCircleRLine /> Logout
             </Nav.Link>

@@ -6,7 +6,7 @@ const DashBoardItem = (props) => {
   const { reportName, reportNum, reportIcon } = props;
   return (
     <div className="dashboard-item">
-      <div>
+      <div className="col">
         <p>
           <BsSquare className="square" />
           &nbsp;

@@ -47,7 +47,7 @@ const LoginForm = () => {
 
       dispatch(loginSuccess(userAll.data));
 
-      navigate("/user-information");
+      navigate("/");
     } catch (err) {
       dispatch(loginFailed());
       toast(err.response.data.message, "error");
@@ -63,10 +63,11 @@ const LoginForm = () => {
   });
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
-      <Form.Group className="mb-3" placeholder="Email">
+      <Form.Group className="mb-3" >
         {/* <Form.Label>Email address</Form.Label> */}
         <Form.Control
           type="email"
+          placeholder="Email"
           {...formik.getFieldProps("email")}
           isInvalid={formik.touched.email && formik.errors.email}
           isValid={formik.touched.email && !formik.errors.email}
@@ -78,6 +79,7 @@ const LoginForm = () => {
       <Form.Group className="mb-3" placeholder="Password">
         {/* <Form.Label>Password</Form.Label> */}
         <PasswordInput
+        
           className="goz"
           {...formik.getFieldProps("password")}
           isInvalid={formik.touched.password && formik.errors.password}
@@ -88,11 +90,7 @@ const LoginForm = () => {
       <Button
         type="submit"
         disabled={loading}
-        style={{
-          backgroundColor: "#e9f548",
-          color: "#005555",
-          padding: ".5rem 8.5rem .5rem 8.5rem",
-        }}
+      
       >
         {loading && <Spinner animation="border" size="sm" />} Login
       </Button>

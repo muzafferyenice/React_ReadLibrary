@@ -3,7 +3,7 @@
 
 .auth {
   background-image: url("required(../../../../../../assets/img/bg/pageheader.png");
-  height: auto;
+  height: 710px;
   background-size: cover;
 
   &::after {
@@ -13,13 +13,13 @@
     bottom: 0;
     right: 0;
     left: 0;
-    height: 900px;
-    background-color: v.$color4;
+    height: 710px;
+    background-color: v.$color6;
     opacity: 0.3;
   }
   .card {
     z-index: 5;
-    background-color: v.$color1;
+    background-color: v.$color2;
     border-radius: 2rem 0 2rem 0;
     width: 350px;
     height: auto;
@@ -27,11 +27,24 @@
 
     .login-register {
       margin-top: 8rem;
+
+      ul {
+        display: flex;
+        gap: 0.5rem;
+
+        li {
+          background-color: v.$color4;
+          color: white !important;
+          border-radius: 0.5rem;
+        }
+      }
       &:first-child {
         /*  button{
           background-color:v.$color4;
           padding: 3rem 0 3rem 0;
         } */
+      }
+      &:nth-child(2) {
       }
     }
 
@@ -45,5 +58,11 @@
 
       transform: translate(-15%, -10%);
     }
+  }
+  button {
+    background-color: #e9f548;
+    color: #005555;
+    border: none;
+    //padding:.5rem 8.5rem .5rem 8.5rem;
   }
 }

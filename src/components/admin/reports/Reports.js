@@ -8,13 +8,17 @@ const Reports = () => {
       <Link to="/budak/reports/most-popular">
         <div> Most Popular Books</div>
       </Link>
-
+      <hr />
       <Link to="/budak/reports/unreturned-books">
         <div> Unreturned Books</div>
       </Link>
+      <hr />
+
       <Link to="/budak/reports/expired-books">
         <div> Expired Books</div>
       </Link>
+      <hr />
+
       <Link to="/budak/reports/most-borrowers">
         <div> Users Who Borrowed The Most Books</div>
       </Link>

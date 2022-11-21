@@ -3,6 +3,7 @@
 
 .book {
   @include m.flexbox(column, flex-start, flex-start, 0);
+  background-color: v.$color6;
 }
 
 .book-info {

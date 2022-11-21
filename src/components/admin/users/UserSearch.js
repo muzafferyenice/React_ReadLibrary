@@ -29,7 +29,7 @@ const UserSearch = () => {
   };
   return (
     <>
-      <div className="p-search text-end">
+      <div className="p-search text-center">
         <input
           type="search"
           name=""

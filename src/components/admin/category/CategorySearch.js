@@ -14,7 +14,7 @@ const CategorySearch = () => {
     navigate("/budak/category-new-page");
   };
   return (
-    <div className="p-search text-end">
+    <div className="p-search text-center">
       <input
         type="search"
         name=""

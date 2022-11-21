@@ -47,7 +47,7 @@ const Dashboard = () => {
     loadReports();
   }, []);
   return (
-    <div className="dashboard">
+    <div className="dashboard" xs={12} md={6} lg={3}>
       {loading &&
         report.map((reportItem, index) => {
           return (

@@ -177,7 +177,7 @@ const ProfileForm = () => {
             variant="primary"
             type="submit"
             disabled={loading}
-            style={{
+          style={{
               backgroundColor: "#e9f548",
               color: "#005555",
               //padding: ".5rem 8.5rem .5rem 8.5rem",

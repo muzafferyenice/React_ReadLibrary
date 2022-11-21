@@ -17,7 +17,7 @@ const Book = (props) => {
   return (
     <Container onClick={handlePage}>
       <Row>
-        <Col sm={3} md={3} lg={3}>
+        <Col sm={2} md={2} lg={2}>
           <img
             src={`/assets/img/books/${name}.jpg`}
             className="img-fluid"
@@ -25,15 +25,19 @@ const Book = (props) => {
           />
         </Col>
 
-        <Col sm={9} md={9} lg={9}>
-          <div>
+        <Col sm={7} md={7} lg={7}>
+          <div className="col">
             <h3>{name}</h3>
-            <div className="book-info">
+            <div className="book-info col">
               <p>{authorName}</p>
-              <p>{isbn}</p>
-              <p>{shelfCode}</p>
-              <p>available</p>
             </div>
+          </div>
+        </Col>
+        <Col sm={3} md={3} lg={3}>
+          <div className="book-info col">
+            <p>{isbn}</p>
+            <p>{shelfCode}</p>
+            <p>available</p>
           </div>
         </Col>
       </Row>

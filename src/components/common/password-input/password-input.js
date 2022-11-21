@@ -12,7 +12,7 @@ const PasswordInput = (props) => {
 
   return (
     <InputGroup className="mb-3 password-input">
-      <Form.Control type={type} {...props} />
+      <Form.Control type={type} {...props} placeholder="Password" />
 
       <InputGroup.Text id="basic-addon2">
         {type === "password" ? (

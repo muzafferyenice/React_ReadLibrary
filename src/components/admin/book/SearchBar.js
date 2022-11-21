@@ -7,6 +7,7 @@ import {
 } from "../../../api/book-service";
 import { useNavigate, useParams } from "react-router-dom";
 import Books from "./Books";
+import "./searchBar.scss";
 const SearchBar = () => {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(true);
@@ -32,7 +33,7 @@ const SearchBar = () => {
   };
   return (
     <>
-      <div className="p-search text-end">
+      <div className="p-search text-center">
         <input
           type="search"
           name=""

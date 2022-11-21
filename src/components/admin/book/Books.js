@@ -58,6 +58,7 @@ const Books = () => {
             {books.map((book, index) => (
               <Col key={index}>
                 <Book {...book} handlePage={() => handlePage(book.id)} />
+                <hr />
               </Col>
             ))}
           </Row>

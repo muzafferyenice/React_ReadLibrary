@@ -24,7 +24,7 @@ const ProfileMenu = () => {
     <Container fluid className="profileMenu">
       <Row className="profile-row">
         <Col className="profile-col">
-          <HiUserGroup />
+          <HiUserGroup className="profile-svg"/>
         </Col>
       </Row>
       <Row className="d-block check-row">
@@ -33,13 +33,7 @@ const ProfileMenu = () => {
             {" "}
             <Col className="profile">
               <div className="form-check">
-                <input
-                  disabled
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
+             
                 <label
                   className="form-check-label active"
                   for="flexCheckDefault"
@@ -58,13 +52,13 @@ const ProfileMenu = () => {
           <li>
             <Col>
               <div className="form-check">
-                <input
+                {/* <input
                   disabled
                   className="form-check-input"
                   type="checkbox"
                   value=""
                   id="flexCheckDefault"
-                />
+                /> */}
                 <label
                   className="form-check-label"
                   for="flexCheckDefault"
@@ -80,13 +74,13 @@ const ProfileMenu = () => {
           <li>
             <Col>
               <div className="form-check">
-                <input
+                {/* <input
                   disabled
                   className="form-check-input"
                   type="checkbox"
                   value=""
                   id="flexCheckDefault"
-                />
+                /> */}
                 <label
                   className="form-check-label"
                   for="flexCheckDefault"

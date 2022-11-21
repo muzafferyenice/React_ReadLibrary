@@ -30,7 +30,7 @@ const PublisherSearch = () => {
     navigate("/budak/publisher-new-page");
   };
   return (
-    <div className="p-search text-end">
+    <div className="p-search text-center">
       <input
         type="search"
         name=""

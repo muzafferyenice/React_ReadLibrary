@@ -153,7 +153,7 @@ const RegisterForm = ({ setDefaultTab }) => {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit" disabled={loading}>
+      <Button type="submit" disabled={loading}>
         {loading && <Spinner animation="border" size="sm" />} Register
       </Button>
     </Form>

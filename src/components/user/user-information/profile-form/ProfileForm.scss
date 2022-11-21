@@ -1,18 +1,25 @@
 @use "../../../../assets/scss/variables" as v;
 
 .profile-form {
-  background-color: v.$color1;
+  background-color: v.$color2;
   margin: 3rem;
   padding: 1rem;
   color: v.$color3;
   border-radius: 2rem;
+ 
+}
   h2 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+   
   }
 
   button {
     font-size: 20px;
     justify-content: flex end;
+   
   }
-}
+  .button:hover{
+    background-color: v.$color1;
+  }
+ 
